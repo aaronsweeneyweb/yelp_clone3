@@ -38,6 +38,8 @@ group :development, :test do
   gem 'capybara'
   gem 'byebug'
   gem "spring"
+  gem 'shoulda'
+  gem 'shoulda-matchers'
 end
 
 group :development do
