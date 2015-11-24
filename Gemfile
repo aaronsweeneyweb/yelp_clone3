@@ -37,6 +37,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'byebug'
+  gem "spring"
 end
 
 group :development do
