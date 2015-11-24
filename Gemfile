@@ -40,6 +40,7 @@ group :development, :test do
   gem "spring"
   gem 'shoulda'
   gem 'shoulda-matchers'
+  gem 'rspec-collection_matchers'
 end
 
 group :development do
