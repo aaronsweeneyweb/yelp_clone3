@@ -12,7 +12,6 @@ class RestaurantsController < ApplicationController
     if @restaurant.save
       redirect_to restaurants_path
     else
-      puts (@restaurant.errors.full_messages)
       render 'new'
     end
   end
