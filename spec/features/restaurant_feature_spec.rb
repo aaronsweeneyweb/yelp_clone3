@@ -56,11 +56,11 @@ feature 'restaurants' do
   end
 
   context "editing a restaurant" do
-    before {Restaurant.create(name: 'KFC')}
+
 
     scenario "lets a user edit a restaurant" do
       visit '/restaurants'
-      sign_up
+      create_restaurant
       click_link("Edit KFC")
       fill_in "Name", with: "Kentucky Fried Chicken"
       click_button("Update Restaurant")

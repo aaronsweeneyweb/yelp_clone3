@@ -44,10 +44,31 @@ feature "User can sign in and out" do
       end
   end
 
-  # context "User can only edit / delete restaurants they have created" do
-  #   it "raises error " do
-
-  #     expect(page).to
-  #   end
-  # end
+  context "User can only edit / delete restaurants they have created" do
+    it "raises error " do
+      visit('/')
+      click_link('Sign up')
+      fill_in('Email', with: 'test@example.com')
+      fill_in('Password', with: 'testtest')
+      fill_in('Password confirmation', with: 'testtest')
+      click_button('Sign up')
+      click_link 'Add a restaurant'
+      fill_in 'Name', with: 'KFC'
+      click_button 'Create Restaurant'
+      click_link('Sign out')
+      click_link('Sign up')
+      fill_in('Email', with: 'test2222@example.com')
+      fill_in('Password', with: 'testtest')
+      fill_in('Password confirmation', with: 'testtest')
+      click_button('Sign up')
+      click_link('Delete KFC')
+      expect(page).not_to have_content('Restaurant deleted successfully')
+      expect(page).to have_content('You are not the owner of this restaurant!')
+      click_link("Edit KFC")
+      fill_in "Name", with: "Fried Chicken"
+      click_button("Update Restaurant")
+      expect(page).not_to have_content('Restaurant updated successfully')
+      expect(page).to have_content('You are not the owner of this restaurant!')
+    end
+  end
 end
