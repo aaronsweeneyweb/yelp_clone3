@@ -19,6 +19,13 @@ def sign_up
   click_button('Sign up')
 end
 
+def create_restaurant
+  sign_up
+  click_link 'Add a restaurant'
+  fill_in 'Name', with: 'KFC'
+  click_button 'Create Restaurant'
+end
+
 
 RSpec.describe RestaurantsHelper, type: :helper do
   pending "add some examples to (or delete) #{__FILE__}"

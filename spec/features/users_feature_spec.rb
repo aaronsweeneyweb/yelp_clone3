@@ -43,4 +43,11 @@ feature "User can sign in and out" do
         expect(page).to have_content("You need to sign in or sign up before continuing.")
       end
   end
+
+  # context "User can only edit / delete restaurants they have created" do
+  #   it "raises error " do
+
+  #     expect(page).to
+  #   end
+  # end
 end

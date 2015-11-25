@@ -70,11 +70,11 @@ feature 'restaurants' do
   end
 
   context 'deleting restaurants' do
-    before {Restaurant.create name:'KFC'}
+    # before {Restaurant.create name:'KFC'}
 
     scenario 'remove a restaurant when a user click a delete link' do
       visit '/restaurants'
-      sign_up
+      create_restaurant
       click_link 'Delete KFC'
       expect(page).not_to have_content 'KFC'
       expect(page).to have_content('Restaurant deleted successfully')
