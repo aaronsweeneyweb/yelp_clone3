@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-feature 'restaurats' do
-  context 'no restaurats have been added' do
+feature 'restaurants' do
+  context 'no restaurants have been added' do
     scenario 'should display a prompt to add a restaurant' do
       visit '/restaurants'
       expect(page).to have_content 'No restaurants yet'
@@ -24,6 +24,7 @@ feature 'restaurats' do
   context 'creating restaurants' do
     scenario 'prompts user to fill out form, then displays the new restaurant' do
       visit '/restaurants'
+      sign_up
       click_link 'Add a restaurant'
       fill_in 'Name', with: 'KFC'
       click_button 'Create Restaurant'
@@ -33,6 +34,7 @@ feature 'restaurats' do
     context 'an invalid restaurant' do
       it 'does not let you submit a name that is too short' do
         visit '/restaurants'
+        sign_up
         click_link "Add a restaurant"
         fill_in 'Name', with: 'kf'
         click_button 'Create Restaurant'
@@ -58,6 +60,7 @@ feature 'restaurats' do
 
     scenario "lets a user edit a restaurant" do
       visit '/restaurants'
+      sign_up
       click_link("Edit KFC")
       fill_in "Name", with: "Kentucky Fried Chicken"
       click_button("Update Restaurant")
@@ -71,6 +74,7 @@ feature 'restaurats' do
 
     scenario 'remove a restaurant when a user click a delete link' do
       visit '/restaurants'
+      sign_up
       click_link 'Delete KFC'
       expect(page).not_to have_content 'KFC'
       expect(page).to have_content('Restaurant deleted successfully')

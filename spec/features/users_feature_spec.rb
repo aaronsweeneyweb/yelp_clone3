@@ -35,4 +35,12 @@ feature "User can sign in and out" do
       expect(page).not_to have_link('Sign up')
     end
   end
+
+  context "User is not signed in anywhere" do
+      it "when trying to add a restaurant should redirect a user to the login page" do
+        visit '/'
+        click_link("Add a restaurant")
+        expect(page).to have_content("You need to sign in or sign up before continuing.")
+      end
+  end
 end
