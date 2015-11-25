@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   resources :restaurants do
     resources :reviews
   end
@@ -8,6 +9,6 @@ Rails.application.routes.draw do
 
   get 'new' => 'restaurants#new'
 
-
+  root to: 'restaurants#index'
 
 end
