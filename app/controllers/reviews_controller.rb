@@ -19,6 +19,11 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def build_review(review_params, current_user)
+    @review = Review.new(review_params)
+    @review.user_id = current_user.id
+  end
+
   def review_params
     params.require(:review).permit(:thoughts, :rating)
   end
