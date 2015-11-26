@@ -8,4 +8,10 @@ class Restaurant < ActiveRecord::Base
     self.reviews.new(review_params.merge({user: current_user}))
   end
 
+  def average_rating
+    return "N/A" if reviews.none?
+    4
+  end
+
+
 end
