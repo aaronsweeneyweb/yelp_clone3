@@ -9,8 +9,11 @@ class Restaurant < ActiveRecord::Base
   end
 
   def average_rating
+    p reviews
+    p reviews.count
     return "N/A" if reviews.none?
-    4
+    # reviews.average(:rating)
+    reviews.inject(0) {|memo, review| memo + review.rating} / reviews.length
   end
 
 
