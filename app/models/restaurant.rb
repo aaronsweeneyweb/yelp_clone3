@@ -4,6 +4,7 @@ class Restaurant < ActiveRecord::Base
   validates :name, length: {minimum:3}, uniqueness: true
 
   def build_review(review_params, current_user)
+
     self.reviews.new(review_params.merge({user: current_user}))
   end
 

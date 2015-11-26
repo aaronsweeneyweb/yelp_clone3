@@ -6,6 +6,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
+
     restaurant = Restaurant.find(params[:restaurant_id])
     @review = restaurant.build_review(review_params, current_user)
     # @review = Review.build_review review_params, current_user, restaurant
