@@ -6,8 +6,9 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @restaurant = Restaurant.find(params[:restaurant_id])
-    @review = @restaurant.build_review review_params, current_user
+    restaurant = Restaurant.find(params[:restaurant_id])
+    @review = restaurant.build_review(review_params, current_user)
+    # @review = Review.build_review review_params, current_user, restaurant
     if @review.save
       redirect_to restaurants_path
     else
@@ -19,12 +20,12 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def build_review(review_params, current_user)
-    @review = Review.new(review_params)
-    @review.user_id = current_user.id
-  end
+  # def build_review(review_params, current_user)
+  #   @review = Review.new(review_params)
+  #   @review.user_id = current_user.id
+  # end
 
   def review_params
-    params.require(:review).permit(:thoughts, :rating)
+    params.require(:review).permit(:thoughts, :rating, :restaurant_id)
   end
 end
